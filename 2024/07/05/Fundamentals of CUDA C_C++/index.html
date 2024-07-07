@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/xing-yu-yang/cloud-image/main/assets/image-20240705163448580.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xing-yu-yang/cloud-image/main/assets/image-20240705174250537.png">
 <meta property="article:published_time" content="2024-07-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-07T03:30:08.179Z">
+<meta property="article:modified_time" content="2024-07-07T03:48:53.589Z">
 <meta property="article:author" content="Xingyu Yang">
 <meta property="article:tag" content="High Performance Computing">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-07 11:30:08" itemprop="dateModified" datetime="2024-07-07T11:30:08+08:00">2024-07-07</time>
+      <time title="Modified: 2024-07-07 11:48:53" itemprop="dateModified" datetime="2024-07-07T11:48:53+08:00">2024-07-07</time>
     </span>
 
   
@@ -307,7 +307,7 @@
 <p><img src="https://raw.githubusercontent.com/xing-yu-yang/cloud-image/main/assets/image-20240705143206485.png" alt="image-20240705143206485"></p>
 <p>Now we can access these values with <code>gridDim.x</code>, <code>gridDim.y</code>, <code>gridDim.z</code>, <code>blockDim.x</code>, <code>blockDim.y</code>, <code>blockDim.z()</code>, <code>blockIdx.x</code>, <code>blockIdx.y</code>, <code>blockIdx.z</code>, <code>threadIdx.x</code>, <code>threadIdx.y</code>, <code>threadIdx.z</code>.</p>
 <p>These values are important for many calculations, as we will discuss later with memory. </p>
-<h4 id="Streaming-Multiprocessors"><a href="#Streaming-Multiprocessors" class="headerlink" title="Streaming Multiprocessors"></a>Streaming Multiprocessors</h4><p>In the end this section, we explain <strong>streaming multiprocessors</strong> (SMs) and offer a simple rule for picking proper numbers for <code>numberOfBlocks</code> and <code>threadsPerBlock</code>. </p>
+<h4 id="Streaming-Multiprocessors"><a href="#Streaming-Multiprocessors" class="headerlink" title="Streaming Multiprocessors"></a>Streaming Multiprocessors</h4><p>In this section, we explain <strong>streaming multiprocessors</strong> (SMs) and offer a simple rule for picking proper numbers for <code>numberOfBlocks</code> and <code>threadsPerBlock</code>. </p>
 <p><img src="https://raw.githubusercontent.com/xing-yu-yang/cloud-image/main/assets/image-20240705142714428.png" alt="image-20240705142714428"></p>
 <p>SMs are basic units that execute tasks. As shown in the figure above, blocks are scheduled to run on SMs. When the number of blocks is multiple of the number of SMs, the execution will be efficient. Therefore, we cannot hardcode <code>numberOfBlocks</code> and may  use an API to get a value for a particular machine instead. Usually, taking <code>numberOfBlocks</code> as <code>numberOfSMs</code> times $16$, $32$, or $64$ would be a good choice.</p>
 <p>As for <code>threadsPerBlock</code>, it can be any integer between $1$ and $1024$. $512$ usually becomes a good choice. </p>
